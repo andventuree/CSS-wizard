@@ -17,5 +17,24 @@ Rather, just reset to bring back to browser settings*/
 }
 
 body {
-  font-family: "Lato", sans-serif;/* putting font fami ly here will allow all children to inherit */
+  font-family: "Lato", sans-serif;/* putting font fami ly here will allow all children to inherit (more efficient) */
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7; /* times bigger than previous line height */
+  color: #777;
+  padding: 30px;
+}
+
+.header {
+  height: 95vh;
+  /* background-image: url(../img/hero.jpg); */
+  background-image: linear-gradient( /* color transition*/
+    to right bottom,
+    rgba(126,213,111,0.8),
+    rgba(40,180,131,0.8)),
+  url(../img/hero.jpg);
+  background-size: cover; /* will always try to fit the viewport in the box */
+  background-position: top; /* if img needs to get cut off, it'll always show position specified. This will cut off bottom */
+  /* background-position: center; will crop top and bottom to keep img center */
+  clip-path: polygon( 0 0, 100% 0, 100% 80%, 0 100%) /* topLeft, topRight, bottomRight, bottomLeft */
 }
