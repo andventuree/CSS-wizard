@@ -1,0 +1,21 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+/* normalize - makes every browser render the same way but since browsers are getting better and better, no need to normalize (wipes all styles, even browser settings)
+Rather, just reset to bring back to browser settings*/
+
+* { /* universal selector */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* change box model so border and padding is not added to total height and width specified for a box */
+}
+
+body {
+  font-family: "Lato", sans-serif;/* putting font fami ly here will allow all children to inherit */
+}
