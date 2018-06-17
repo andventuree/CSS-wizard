@@ -36,5 +36,50 @@ body {
   background-size: cover; /* will always try to fit the viewport in the box */
   background-position: top; /* if img needs to get cut off, it'll always show position specified. This will cut off bottom */
   /* background-position: center; will crop top and bottom to keep img center */
-  clip-path: polygon( 0 0, 100% 0, 100% 80%, 0 100%) /* topLeft, topRight, bottomRight, bottomLeft */
+  clip-path: polygon( 0 0, 100% 0, 100% 80%, 0 100%); /* topLeft, topRight, bottomRight, bottomLeft */
+  position: relative;
+  /* if this relative is not present, the .logo-box would be 40px from top left */
 }
+
+.logo-box {
+  /* to anchor an absolute element onto a container element, the parent container needs the relative property*/
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+
+.logo {
+  height: 35px;
+}
+
+.text-box {
+  position: absolute; /*in relation to parent */
+  /* we want to center the container to be center of page*/
+  top: 40%;
+  left: 50%; /*% of the parent (container elem) */
+  /* but instead of playing w/ the %, (cause 50% doesn't work out right) combine it with transform */
+  transform: translate(-50%, -50%);
+  /* transforms position of element itself */
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.heading-primary-main {
+  /* since a span is an inline elem, you'll need to change display to change behavior*/
+  display: block;
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 35px;
+
+}
+
+.heading-primary-sub {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 14.2px;
+}
+
