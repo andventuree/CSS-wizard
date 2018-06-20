@@ -60,6 +60,7 @@ body {
   /* but instead of playing w/ the %, (cause 50% doesn't work out right) combine it with transform */
   transform: translate(-50%, -50%);
   /* transforms position of element itself */
+  text-align: center;
 }
 
 .heading-primary {
@@ -68,6 +69,7 @@ body {
 
   /* fix for shaking from animation, bug no one knows y */
   backface-visibility: hidden;
+  margin-bottom: 60px;
 }
 
 .heading-primary-main {
@@ -121,4 +123,31 @@ body {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+/* psuedo class, style classes under special states. link is specific to a tag */
+/* combine all these psuedo classes to make it feel like a btn press */
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none; /* kills blue underline for a tag */
+  padding: 15px 40px;
+  display: inline-block;
+  border-radius: 100px;
+  /* this prop must be on intitial state!, just how it works */
+  transition: all .2s;
+}
+
+.btn:hover {
+  transform: translateY(-3px); /* since we want to move it vertical, use -Y */
+  box-shadow: 0 10px 20px rgba(0,0,0,.2); /* y , x , blur , color */
+}
+
+.btn:active {
+  transform: translateY(-1px); /* active is in relation to inital link state, not back on hover */
+}
+
+.btn-white {
+  background: #fff;
+  color: #777
 }
