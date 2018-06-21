@@ -10,10 +10,18 @@ Dark green: #28b485
 /* normalize - makes every browser render the same way but since browsers are getting better and better, no need to normalize (wipes all styles, even browser settings)
 Rather, just reset to bring back to browser settings*/
 
-* { /* universal selector */
+*,
+*::after,
+*::before { /* universal selector */
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* change box model so border and padding is not added to total height and width specified for a box */
+  /* box-sizing: border-box; */ /* change box model so border and padding is not added to total height and width specified for a box */
+  box-sizing: inherit;
+}
+
+html {
+  /* font-size: 10px; */ /* used 10px b/c its a clean num| 10px = 1 rem */
+  font-size: 62.5%; /* default browser f-size is 16px, 100/16 = 62.5, making it completely dynamic */
 }
 
 body {
@@ -22,7 +30,9 @@ body {
   font-size: 16px;
   line-height: 1.7; /* times bigger than previous line height */
   color: #777;
-  padding: 30px;
+  padding: 3rem;
+
+  box-sizing: border-box;
 }
 
 .header {
@@ -44,12 +54,12 @@ body {
 .logo-box {
   /* to anchor an absolute element onto a container element, the parent container needs the relative property*/
   position: absolute;
-  top: 40px;
-  left: 40px;
+  top: 4rem;
+  left: 4rem;
 }
 
 .logo {
-  height: 35px;
+  height: 3.5rem;
 }
 
 .text-box {
@@ -69,15 +79,15 @@ body {
 
   /* fix for shaking from animation, bug no one knows y */
   backface-visibility: hidden;
-  margin-bottom: 60px;
+  margin-bottom: 6rem;
 }
 
 .heading-primary-main {
   /* since a span is an inline elem, you'll need to change display to change behavior*/
   display: block;
-  font-size: 60px;
+  font-size: 6rem;
   font-weight: 400;
-  letter-spacing: 35px;
+  letter-spacing: 3.5rem;
 
   animation-name: moveInLeft; /* that you've specified below */
   animation-duration: 2s;
@@ -90,9 +100,9 @@ body {
 
 .heading-primary-sub {
   display: block;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: 14.2px;
+  letter-spacing: 1.42rem;
 
   animation: moveInRight 2s ease-out;
 }
@@ -100,10 +110,10 @@ body {
 @keyframes moveInLeft {
   0% { /* start of animation */
     opacity: 0;
-    transform: translateX(-100px); /* x moves right */
+    transform: translateX(-10rem); /* x moves right */
   }
   80% {
-    transform: translateX(20px); /* rotate(180deg) */
+    transform: translateX(2rem); /* rotate(180deg) */
   }
   100% { /* end of animation */
     opacity: 1;
@@ -114,10 +124,10 @@ body {
 @keyframes moveInRight {
   0% { /* start of animation */
     opacity: 0;
-    transform: translateX(100px) /* x moves right */
+    transform: translateX(10rem) /* x moves right */
   }
   80% {
-    transform: translateX(-20px);
+    transform: translateX(-2rem);
   }
   100% { /* end of animation */
     opacity: 1;
@@ -131,22 +141,23 @@ body {
 .btn:visited {
   text-transform: uppercase;
   text-decoration: none; /* kills blue underline for a tag */
-  padding: 15px 40px;
+  padding: 1.5rem 4rem;
   display: inline-block;
-  border-radius: 100px;
+  border-radius: 10rem;
   /* this prop must be on intitial state!, just how it works */
   transition: all .2s;
   position: relative;
+  font-size: 1.6rem;
 }
 
 .btn:hover {
-  transform: translateY(-3px); /* since we want to move it vertical, use -Y */
-  box-shadow: 0 10px 20px rgba(0,0,0,.2); /* y , x , blur , color */
+  transform: translateY(-.3rem); /* since we want to move it vertical, use -Y */
+  box-shadow: 0 1rem 2rem rgba(0,0,0,.2); /* y , x , blur , color */
 }
 
 .btn:active {
-  transform: translateY(-1px); /* active is in relation to inital link state, not back on hover */
-  box-shadow: 0 5px 10px rgba(0,0,0,.2); /* y , x , blur , color */
+  transform: translateY(-.1rem); /* active is in relation to inital link state, not back on hover */
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.2); /* y , x , blur , color */
 }
 
 .btn-white {
@@ -180,7 +191,7 @@ body {
 @keyframes moveInButton {
   0% { /* start of animation */
     opacity: 0;
-    transform: translateY(100px) /* Y moves up */
+    transform: translateY(10rem) /* Y moves up */
   }
   100% { /* end of animation */
     opacity: 1;
