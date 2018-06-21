@@ -51,18 +51,18 @@ body {
   /* if this relative is not present, the .logo-box would be 40px from top left */
 }
 
-.logo-box {
+.header__logo-box {
   /* to anchor an absolute element onto a container element, the parent container needs the relative property*/
   position: absolute;
   top: 4rem;
   left: 4rem;
 }
 
-.logo {
+.header__logo {
   height: 3.5rem;
 }
 
-.text-box {
+.header__text-box {
   position: absolute; /*in relation to parent */
   /* we want to center the container to be center of page*/
   top: 40%;
@@ -82,7 +82,7 @@ body {
   margin-bottom: 6rem;
 }
 
-.heading-primary-main {
+.heading-primary--main {
   /* since a span is an inline elem, you'll need to change display to change behavior*/
   display: block;
   font-size: 6rem;
@@ -98,7 +98,7 @@ body {
 
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
   display: block;
   font-size: 2rem;
   font-weight: 700;
@@ -160,7 +160,7 @@ body {
   box-shadow: 0 .5rem 1rem rgba(0,0,0,.2); /* y , x , blur , color */
 }
 
-.btn-white {
+.btn--white {
   background: #fff;
   color: #777
 }
@@ -179,7 +179,7 @@ body {
   transition: all .4s;
 }
 
-.btn-white::after {
+.btn--white::after {
   background-color: #fff;
 }
 
@@ -199,7 +199,7 @@ body {
   }
 }
 
-.btn-animated {
+.btn--animated {
   animation: moveInButton .5s .75s; /* .75 is the delay */
   animation-fill-mode: backwards; /* will apply 0% animation when page loads so it doesn't appear randomly */
 
