@@ -1,0 +1,44 @@
+.composition {
+  position: relative;
+
+  &__photo {
+    width: 55%; //makes image scale nicely with viewport
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.4);
+    border-radius: 2px;
+    position: absolute;
+    z-index: 10; //so we can distinqusish later, which img on top
+    transition: all 0.2s;
+
+    outline-offset: 2rem; //adds space between outline and elem content
+
+    &--p1 {
+      left: 0;
+      top: -2rem; //moves it upwards
+    }
+
+    &--p2 {
+      right: 0;
+      top: 2rem;
+    }
+
+    &--p3 {
+      left: 20%;
+      top: 10rem;
+    }
+
+    &:hover {
+      transform: scale(1.05) translateY(-0.5rem); //makes it pop
+      box-shadow: 0 2.5rem 4rem rgba($color-black, 0.5);
+      z-index: 20;
+
+      outline: 1.5rem solid $color-primary; //like a border but not the same
+      //kinda like surrounding to margin:
+    }
+  }
+
+  //composition:hover composition__photo:not(:hover)
+  //first find the photo you hovered and then, look at the others
+  &:hover &__photo:not(:hover) {
+    transform: scale(0.95);
+  }
+}
