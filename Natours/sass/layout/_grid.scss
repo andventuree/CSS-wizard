@@ -1,6 +1,5 @@
 .row {
   max-width: $grid-width; //breakpoint: if viewport less than 114rem, then use 100%
-  background-color: #eee;
   margin: 0 auto; //trick to center block elems inside other block elems
 
   &:not(:last-child) {
