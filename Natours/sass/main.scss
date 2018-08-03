@@ -1,11 +1,9 @@
-/*
-COLORS:
+$color-primary: #7ed56f;
+$color-primary-light: #55c57a;
+$color-primary-dark: #28b485;
 
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
-
-*/
+$color-grey-dark: #777;
+$color-white: #fff;
 
 /* normalize - makes every browser render the same way but since browsers are getting better and better, no need to normalize (wipes all styles, even browser settings)
 Rather, just reset to bring back to browser settings*/
@@ -30,7 +28,7 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.7; /* times bigger than previous line height */
-  color: #777;
+  color: $color-grey-dark;
   padding: 3rem;
 
   box-sizing: border-box;
@@ -41,8 +39,8 @@ body {
   /* background-image: url(../img/hero.jpg); */
   background-image: linear-gradient(
       /* color transition*/ to right bottom,
-      rgba(126, 213, 111, 0.8),
-      rgba(40, 180, 131, 0.8)
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
     ),
     url(../img/hero.jpg);
   background-size: cover; /* will always try to fit the viewport in the box */
@@ -81,7 +79,7 @@ body {
 }
 
 .heading-primary {
-  color: #fff;
+  color: $color-white;
   text-transform: uppercase;
 
   /* fix for shaking from animation, bug no one knows y */
@@ -175,8 +173,8 @@ body {
 }
 
 .btn--white {
-  background: #fff;
-  color: #777;
+  background: $color-white;
+  color: $color-grey-dark;
 }
 
 /* in order to have an after effect, you MUST specify content and display prop */
@@ -194,7 +192,7 @@ body {
 }
 
 .btn--white::after {
-  background-color: #fff;
+  background-color: $color-white;
 }
 
 .btn:hover::after {
