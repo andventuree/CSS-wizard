@@ -1,0 +1,43 @@
+.header {
+  height: 95vh;
+  /* background-image: url(../img/hero.jpg); */
+  background-image: linear-gradient(
+      /* color transition*/ to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url(../img/hero.jpg);
+  background-size: cover; /* will always try to fit the viewport in the box */
+  background-position: top; /* if img needs to get cut off, it'll always show position specified. This will cut off bottom */
+  /* background-position: center; will crop top and bottom to keep img center */
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 80%,
+    0 100%
+  ); /* topLeft, topRight, bottomRight, bottomLeft */
+  position: relative;
+  /* if this relative is not present, the .logo-box would be 40px from top left */
+
+  &__logo-box {
+    /* to anchor an absolute element onto a container element, the parent container needs the relative property*/
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo {
+    height: 3.5rem;
+  }
+
+  &__text-box {
+    position: absolute; /*in relation to parent */
+    /* we want to center the container to be center of page*/
+    top: 40%;
+    left: 50%; /*% of the parent (container elem) */
+    /* but instead of playing w/ the %, (cause 50% doesn't work out right) combine it with transform */
+    transform: translate(-50%, -50%);
+    /* transforms position of element itself */
+    text-align: center;
+  }
+}
