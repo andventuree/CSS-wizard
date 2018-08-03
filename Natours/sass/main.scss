@@ -4,6 +4,7 @@ $color-primary-dark: #28b485;
 
 $color-grey-dark: #777;
 $color-white: #fff;
+$color-black: #000;
 
 /* normalize - makes every browser render the same way but since browsers are getting better and better, no need to normalize (wipes all styles, even browser settings)
 Rather, just reset to bring back to browser settings*/
@@ -54,28 +55,28 @@ body {
   ); /* topLeft, topRight, bottomRight, bottomLeft */
   position: relative;
   /* if this relative is not present, the .logo-box would be 40px from top left */
-}
 
-.header__logo-box {
-  /* to anchor an absolute element onto a container element, the parent container needs the relative property*/
-  position: absolute;
-  top: 4rem;
-  left: 4rem;
-}
+  &__logo-box {
+    /* to anchor an absolute element onto a container element, the parent container needs the relative property*/
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
 
-.header__logo {
-  height: 3.5rem;
-}
+  &__logo {
+    height: 3.5rem;
+  }
 
-.header__text-box {
-  position: absolute; /*in relation to parent */
-  /* we want to center the container to be center of page*/
-  top: 40%;
-  left: 50%; /*% of the parent (container elem) */
-  /* but instead of playing w/ the %, (cause 50% doesn't work out right) combine it with transform */
-  transform: translate(-50%, -50%);
-  /* transforms position of element itself */
-  text-align: center;
+  &__text-box {
+    position: absolute; /*in relation to parent */
+    /* we want to center the container to be center of page*/
+    top: 40%;
+    left: 50%; /*% of the parent (container elem) */
+    /* but instead of playing w/ the %, (cause 50% doesn't work out right) combine it with transform */
+    transform: translate(-50%, -50%);
+    /* transforms position of element itself */
+    text-align: center;
+  }
 }
 
 .heading-primary {
@@ -85,30 +86,30 @@ body {
   /* fix for shaking from animation, bug no one knows y */
   backface-visibility: hidden;
   margin-bottom: 6rem;
-}
 
-.heading-primary--main {
-  /* since a span is an inline elem, you'll need to change display to change behavior*/
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
+  &--main {
+    /* since a span is an inline elem, you'll need to change display to change behavior*/
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
 
-  animation-name: moveInLeft; /* that you've specified below */
-  animation-duration: 2s;
-  animation-timing-function: ease-out; /*there are other distributions of speed */
+    animation-name: moveInLeft; /* that you've specified below */
+    animation-duration: 2s;
+    animation-timing-function: ease-out; /*there are other distributions of speed */
 
-  /* animation-delay: 3s; */
-  /* animation-iteration-count: 3; */
-}
+    /* animation-delay: 3s; */
+    /* animation-iteration-count: 3; */
+  }
 
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.42rem;
+  &--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.42rem;
 
-  animation: moveInRight 2s ease-out;
+    animation: moveInRight 2s ease-out;
+  }
 }
 
 @keyframes moveInLeft {
@@ -143,77 +144,78 @@ body {
   }
 }
 
-/* psuedo class, style classes under special states. link is specific to a tag */
-/* combine all these psuedo classes to make it feel like a btn press */
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none; /* kills blue underline for a tag */
-  padding: 1.5rem 4rem;
-  display: inline-block;
-  border-radius: 10rem;
-  /* this prop must be on intitial state!, just how it works */
-  transition: all 0.2s;
-  position: relative;
-  font-size: 1.6rem;
-}
-
-.btn:hover {
-  transform: translateY(
-    -0.3rem
-  ); /* since we want to move it vertical, use -Y */
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); /* y , x , blur , color */
-}
-
-.btn:active {
-  transform: translateY(
-    -0.1rem
-  ); /* active is in relation to inital link state, not back on hover */
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); /* y , x , blur , color */
-}
-
-.btn--white {
-  background: $color-white;
-  color: $color-grey-dark;
-}
-
-/* in order to have an after effect, you MUST specify content and display prop */
-.btn::after {
-  content: "";
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  border-radius: 100px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transition: all 0.4s;
-}
-
-.btn--white::after {
-  background-color: $color-white;
-}
-
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6); /* */
-  opacity: 0;
-}
-
-@keyframes moveInButton {
-  0% {
-    /* start of animation */
-    opacity: 0;
-    transform: translateY(10rem); /* Y moves up */
+.btn {
+  /* psuedo class, style classes under special states. link is specific to a tag */
+  /* combine all these psuedo classes to make it feel like a btn press */
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none; /* kills blue underline for a tag */
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    /* this prop must be on intitial state!, just how it works */
+    transition: all 0.2s;
+    position: relative;
+    font-size: 1.6rem;
   }
-  100% {
-    /* end of animation */
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-.btn--animated {
-  animation: moveInButton 0.5s 0.75s; /* .75 is the delay */
-  animation-fill-mode: backwards; /* will apply 0% animation when page loads so it doesn't appear randomly */
+  &:hover {
+    transform: translateY(
+      -0.3rem
+    ); /* since we want to move it vertical, use -Y */
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2); /* y , x , blur , color */
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6); /* */
+      opacity: 0;
+    }
+  }
+
+  &:active {
+    transform: translateY(
+      -0.1rem
+    ); /* active is in relation to inital link state, not back on hover */
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2); /* y , x , blur , color */
+  }
+
+  &--white {
+    background: $color-white;
+    color: $color-grey-dark;
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  /* in order to have an after effect, you MUST specify content and display prop */
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+  }
+
+  @keyframes moveInButton {
+    0% {
+      /* start of animation */
+      opacity: 0;
+      transform: translateY(10rem); /* Y moves up */
+    }
+    100% {
+      /* end of animation */
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &--animated {
+    animation: moveInButton 0.5s 0.75s; /* .75 is the delay */
+    animation-fill-mode: backwards; /* will apply 0% animation when page loads so it doesn't appear randomly */
+  }
 }
