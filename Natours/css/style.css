@@ -1,90 +1,3 @@
-/* normalize - makes every browser render the same way but since browsers are getting better and better, no need to normalize (wipes all styles, even browser settings)
-Rather, just reset to bring back to browser settings*/
-*,
-*::after,
-*::before {
-  /* universal selector */
-  margin: 0;
-  padding: 0;
-  /* box-sizing: border-box; */
-  /* change box model so border and padding is not added to total height and width specified for a box */
-  box-sizing: inherit; }
-
-html {
-  /* font-size: 10px; */
-  /* used 10px b/c its a clean num| 10px = 1 rem */
-  font-size: 62.5%;
-  /* default browser f-size is 16px, 100/16 = 62.5, making it completely dynamic */ }
-
-body {
-  font-family: "Lato", sans-serif;
-  /* putting font fami ly here will allow all children to inherit (more efficient) */
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.7;
-  /* times bigger than previous line height */
-  color: #777;
-  padding: 3rem;
-  box-sizing: border-box; }
-
-.header {
-  height: 95vh;
-  /* background-image: url(../img/hero.jpg); */
-  background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
-  background-size: cover;
-  /* will always try to fit the viewport in the box */
-  background-position: top;
-  /* if img needs to get cut off, it'll always show position specified. This will cut off bottom */
-  /* background-position: center; will crop top and bottom to keep img center */
-  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-  /* topLeft, topRight, bottomRight, bottomLeft */
-  position: relative;
-  /* if this relative is not present, the .logo-box would be 40px from top left */ }
-  .header__logo-box {
-    /* to anchor an absolute element onto a container element, the parent container needs the relative property*/
-    position: absolute;
-    top: 4rem;
-    left: 4rem; }
-  .header__logo {
-    height: 3.5rem; }
-  .header__text-box {
-    position: absolute;
-    /*in relation to parent */
-    /* we want to center the container to be center of page*/
-    top: 40%;
-    left: 50%;
-    /*% of the parent (container elem) */
-    /* but instead of playing w/ the %, (cause 50% doesn't work out right) combine it with transform */
-    transform: translate(-50%, -50%);
-    /* transforms position of element itself */
-    text-align: center; }
-
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  /* fix for shaking from animation, bug no one knows y */
-  backface-visibility: hidden;
-  margin-bottom: 6rem; }
-  .heading-primary--main {
-    /* since a span is an inline elem, you'll need to change display to change behavior*/
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    animation-name: moveInLeft;
-    /* that you've specified below */
-    animation-duration: 2s;
-    animation-timing-function: ease-out;
-    /*there are other distributions of speed */
-    /* animation-delay: 3s; */
-    /* animation-iteration-count: 3; */ }
-  .heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.42rem;
-    animation: moveInRight 2s ease-out; }
-
 @keyframes moveInLeft {
   0% {
     /* start of animation */
@@ -111,6 +24,63 @@ body {
     /* end of animation */
     opacity: 1;
     transform: translateX(0); } }
+
+/* normalize - makes every browser render the same way but since browsers are getting better and better, no need to normalize (wipes all styles, even browser settings)
+Rather, just reset to bring back to browser settings*/
+*,
+*::after,
+*::before {
+  /* universal selector */
+  margin: 0;
+  padding: 0;
+  /* box-sizing: border-box; */
+  /* change box model so border and padding is not added to total height and width specified for a box */
+  box-sizing: inherit; }
+
+html {
+  /* font-size: 10px; */
+  /* used 10px b/c its a clean num| 10px = 1 rem */
+  font-size: 62.5%;
+  /* default browser f-size is 16px, 100/16 = 62.5, making it completely dynamic */ }
+
+body {
+  box-sizing: border-box; }
+
+body {
+  font-family: "Lato", sans-serif;
+  /* putting font fami ly here will allow all children to inherit (more efficient) */
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  /* times bigger than previous line height */
+  color: #777;
+  padding: 3rem; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /* fix for shaking from animation, bug no one knows y */
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    /* since a span is an inline elem, you'll need to change display to change behavior*/
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    /* that you've specified below */
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    /*there are other distributions of speed */
+    /* animation-delay: 3s; */
+    /* animation-iteration-count: 3; */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.42rem;
+    animation: moveInRight 2s ease-out; }
 
 .btn {
   /* psuedo class, style classes under special states. link is specific to a tag */
@@ -173,3 +143,63 @@ body {
     /* .75 is the delay */
     animation-fill-mode: backwards;
     /* will apply 0% animation when page loads so it doesn't appear randomly */ }
+
+.header {
+  height: 95vh;
+  /* background-image: url(../img/hero.jpg); */
+  background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  /* will always try to fit the viewport in the box */
+  background-position: top;
+  /* if img needs to get cut off, it'll always show position specified. This will cut off bottom */
+  /* background-position: center; will crop top and bottom to keep img center */
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  /* topLeft, topRight, bottomRight, bottomLeft */
+  position: relative;
+  /* if this relative is not present, the .logo-box would be 40px from top left */ }
+  .header__logo-box {
+    /* to anchor an absolute element onto a container element, the parent container needs the relative property*/
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    /*in relation to parent */
+    /* we want to center the container to be center of page*/
+    top: 40%;
+    left: 50%;
+    /*% of the parent (container elem) */
+    /* but instead of playing w/ the %, (cause 50% doesn't work out right) combine it with transform */
+    transform: translate(-50%, -50%);
+    /* transforms position of element itself */
+    text-align: center; }
+
+.row {
+  max-width: 114rem;
+  background-color: #eee;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    background-color: orangered;
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc( 2 * ((100% - 2 * 6rem)) / 3 + 6rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc( 2 * ((100% - 3 * 6rem) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc( 3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
