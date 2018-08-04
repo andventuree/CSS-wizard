@@ -41,6 +41,14 @@
     }
   }
 
+  &--green {
+    background: $color-primary;
+    color: $color-white;
+    &::after {
+      background: $color-primary;
+    }
+  }
+
   /* in order to have an after effect, you MUST specify content and display prop */
   &::after {
     content: "";

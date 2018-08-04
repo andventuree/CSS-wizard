@@ -74,6 +74,9 @@
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 
+    border-top-left-radius: 3px; //b/c clip path negated overflow:hidden on parent
+    border-top-right-radius: 3px; //so we set that rounded edges manually
+
     &--1 {
       background-image: linear-gradient(
           to right bottom,
