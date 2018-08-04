@@ -5,7 +5,7 @@
   height: 50rem; //clearfix equivalent for absolute children and collapsing parent
 
   &__side {
-    background-color: orangered;
+    background-color: #fff;
     height: 50rem;
     transition: all 0.8s;
     color: #fff;
@@ -20,7 +20,7 @@
     box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
 
     &--front {
-      background-color: orange;
+      background-color: $color-white;
     }
 
     &--back {
@@ -38,7 +38,7 @@
   }
 
   &:hover &__side--front {
-    transform: rotateY(180deg);
+    transform: rotateY(-180deg);
   }
 
   &:hover &__side--back {

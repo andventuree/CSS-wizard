@@ -250,7 +250,7 @@ body {
   position: relative;
   height: 50rem; }
   .card__side {
-    background-color: orangered;
+    background-color: #fff;
     height: 50rem;
     transition: all 0.8s;
     color: #fff;
@@ -264,13 +264,13 @@ body {
     border-radius: 3px;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
     .card__side--front {
-      background-color: orange; }
+      background-color: #fff; }
     .card__side--back {
       transform: rotateY(180deg); }
       .card__side--back-1 {
         background-image: linear-gradient(to right bottom, #ffb970, #ff7730); }
   .card:hover .card__side--front {
-    transform: rotateY(180deg); }
+    transform: rotateY(-180deg); }
   .card:hover .card__side--back {
     transform: rotateY(0); }
 
