@@ -1,15 +1,16 @@
 .card {
+  // FUNCTIONALITY
   perspective: 150rem; // perspective must be on parent, need a large value
   -moz-perspective: 150rem;
   position: relative;
-  height: 50rem; //clearfix equivalent for absolute children and collapsing parent
+  height: 52rem; //clearfix equivalent for absolute children and collapsing parent
+
+  position: relative;
 
   &__side {
-    background-color: #fff;
-    height: 50rem;
+    height: 52rem;
     transition: all 0.8s;
-    color: #fff;
-    height: 50rem; //same height as parent
+    height: 52rem; //same height as parent
     transition: all 2s ease;
     position: absolute;
     top: 0;
@@ -18,6 +19,9 @@
     backface-visibility: hidden; //makes the backside of an elem invisible
     border-radius: 3px;
     box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+    overflow: hidden; //kinda like a clip path for images that exceed side of parent
+    //when image's sharp corners overrides the border-radius
 
     &--front {
       background-color: $color-white;
@@ -43,5 +47,80 @@
 
   &:hover &__side--back {
     transform: rotateY(0);
+  }
+
+  // FRONT SIDE STYLING
+  &__picture {
+    background-size: cover;
+    height: 23rem; //since div has no content, you dont see the   full picture
+    background-blend-mode: screen; //check other settings in dev tools
+
+    //Best practice to put pre-fix before og
+    //clip path does not work for IE or Ms Edge browsers
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+    &--1 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        ),
+        url("../img/nat-5.jpg");
+    }
+
+    &--2 {
+      background-image: url("../img/nat-5.jpg");
+    }
+
+    &--3 {
+      background-image: url("../img/nat-5.jpg");
+    }
+  }
+
+  &__heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: $color-white;
+    text-align: right;
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    width: 50%; //force the span to take more than 1 line
+  }
+
+  &__heading-span {
+    padding: 1rem 1.5rem;
+    -webkit-box-decoration-break: clone; //treats broken text lines as their own elem
+    box-decoration-break: clone;
+
+    &--1 {
+      background-image: linear-gradient(
+        to right,
+        rgba($color-secondary-light, 0.85),
+        rgba($color-secondary-dark, 0.85)
+      );
+    }
+  }
+
+  &__details {
+    padding: 3rem;
+
+    ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto;
+
+      li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $color-grey-light-2;
+        }
+      }
+    }
   }
 }
