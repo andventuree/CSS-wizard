@@ -30,13 +30,43 @@
 
     // protip: dont mess with margins on floated elements to move them in place
     transform: translateX(-3rem) skewX(12deg); //safer to just transform to move shape
+
+    position: relative; //for hover blur over image
   }
 
   &__img {
     height: 100%;
+    transform: translate(-4rem) scale(1.4);
+    backface-visibility: hidden; //stop shaking at the end of animation
+    transition: all 0.5s;
   }
 
   &__text {
     transform: skewX(12deg);
+  }
+
+  &__caption {
+    position: absolute; //shape is the parent
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    color: $color-white;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.5s;
+    backface-visibility: hidden; //stop shaking at the end of animation
+  }
+
+  &:hover &__caption {
+    //activates only when you hover over container
+    //and applies these settings only to story__caption
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover &__img {
+    transform: translate(-4rem) scale(1); //kinda zooms out
+    filter: blur(3px) brightness(80%); //<100% makes it darker
   }
 }
