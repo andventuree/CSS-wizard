@@ -4,6 +4,7 @@
   }
 
   &__input {
+    width: 100%;
     font-size: 1.5rem;
     padding: 1.5rem 2rem;
     border-radius: 2px;
@@ -47,5 +48,55 @@
     opacity: 0; //need this b/c you can't animate visibility
     visibility: hidden;
     transform: translateY(-4rem);
+  }
+
+  &__radio-input {
+    display: none;
+  }
+
+  &__radio-group {
+    width: 49%;
+    display: inline-block; //so btns appear side by side
+  }
+
+  &__radio-label {
+    font-size: $default-font-size;
+    cursor: pointer; //cursor changes from arrow to pointing finger
+    position: relative;
+    padding-left: 5rem;
+  }
+
+  &__radio-button {
+    height: 3rem;
+    width: 3rem;
+    border: 5px solid $color-primary;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: -0.4rem;
+
+    &::after {
+      //makes the dot inside radio button
+      content: "";
+      display: block;
+      height: 1.3rem;
+      width: 1.3rem;
+      border-radius: 50%;
+      background-color: $color-primary;
+
+      //centers this dot inside its container
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      opacity: 0;
+      transition: all 0.2s;
+    }
+  }
+
+  &__radio-input:checked ~ &__radio-label &__radio-button::after {
+    opacity: 1;
   }
 }

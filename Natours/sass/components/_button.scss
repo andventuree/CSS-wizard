@@ -1,6 +1,7 @@
 .btn {
   /* psuedo class, style classes under special states. link is specific to a tag */
   /* combine all these psuedo classes to make it feel like a btn press */
+  &, //makes changes apply to regular buttons as well as pseudo-classes
   &:link,
   &:visited {
     text-transform: uppercase;
@@ -12,6 +13,10 @@
     transition: all 0.2s;
     position: relative;
     font-size: $default-font-size;
+
+    //Changes to native <button> element
+    border: none;
+    cursor: pointer;
   }
 
   &:hover {
@@ -26,7 +31,9 @@
     }
   }
 
-  &:active {
+  &:active,
+  &:focus {
+    outline: none;
     transform: translateY(
       -0.1rem
     ); /* active is in relation to inital link state, not back on hover */
