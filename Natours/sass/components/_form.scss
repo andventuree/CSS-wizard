@@ -1,0 +1,50 @@
+.form {
+  &__group:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  &__input {
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    background-color: rgba($color-white, 0.5);
+    border: none;
+    border-bottom: 3px solid transparent;
+    display: block; //so it has its own line and doesn't jump around
+
+    color: inherit;
+    font-family: inherit; //by default, browsers will use their own font for forms
+
+    &:focus {
+      outline: none; //remove border highlight when you select input to type in
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+      border-bottom: 3px solid $color-primary;
+    }
+
+    &:focus:invalid {
+      //:invalid is a built in form validator
+      border-bottom: 3px solid $color-secondary-light;
+    }
+
+    &::-webkit-input-placeholder {
+      //only works for safari + chrome
+      color: $color-grey-dark-2;
+    }
+  }
+
+  &__label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: 0.7rem;
+    display: block;
+  }
+
+  // ~ general sibling selector
+  // + closest adjacent sibling selector
+  &__input:placeholder-shown + &__label {
+    opacity: 0; //need this b/c you can't animate visibility
+    visibility: hidden;
+    transform: translateY(-4rem);
+  }
+}
