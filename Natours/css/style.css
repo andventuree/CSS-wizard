@@ -420,7 +420,8 @@ body {
   border-bottom: 3px solid transparent;
   display: block;
   color: inherit;
-  font-family: inherit; }
+  font-family: inherit;
+  transition: all 0.6s; }
   .form__input:focus {
     outline: none;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
