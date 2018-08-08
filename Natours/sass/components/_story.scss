@@ -1,0 +1,42 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+  background-color: $color-white;
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem; //since shape exceeded padding, add more
+  font-size: $default-font-size;
+
+  transform: skewX(-12deg); //gives text the polygon effect
+
+  // & > * {
+  //   transform: skewX(12deg); //offsets skew for all contained elems
+  //   //btw since there's a transform already on the shape, you can't stack them
+  //   //so instead of this, we need to apply this redundantly to both
+  // }
+
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(
+      50% at 50% 50%
+    ); //radius (% * width * height of div), origin point
+
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+
+    // protip: dont mess with margins on floated elements to move them in place
+    transform: translateX(-3rem) skewX(12deg); //safer to just transform to move shape
+  }
+
+  &__img {
+    height: 100%;
+  }
+
+  &__text {
+    transform: skewX(12deg);
+  }
+}
