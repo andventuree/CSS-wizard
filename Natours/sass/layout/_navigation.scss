@@ -1,5 +1,6 @@
 .navigation {
   &__checkbox {
+    display: none;
   }
   &__button {
     background-color: $color-white;
@@ -11,6 +12,8 @@
     right: 6rem;
     z-index: 2000; //highest elem on page
     box-shadow: 0 1rem 3rem rgba($color-black, 0.1);
+    text-align: center;
+    cursor: pointer;
   }
 
   &__background {
@@ -40,7 +43,7 @@
     //0 width makes elem disappear
     width: 0;
     opacity: 0;
-    transition: opacity 0.8s;
+    transition: all 0.8s 0.1s;
   }
 
   &__list {
@@ -51,6 +54,7 @@
     width: 100%; //removes leftover effect of having list on the edge of screen
   }
   &__item {
+    margin: 1rem;
   }
 
   &__link {
@@ -70,7 +74,7 @@
         $color-white 50%
       );
       background-size: 220%;
-      transition: all 0.9s;
+      transition: all 0.8s;
 
       span {
         margin-right: 1.5rem;
@@ -86,6 +90,7 @@
     }
   }
 
+  // FUNCTIONALITY
   //~ selects siblings
   &__checkbox:checked ~ &__background {
     transform: scale(80);
@@ -94,5 +99,56 @@
   &__checkbox:checked ~ &__nav {
     opacity: 1;
     width: 100%;
+  }
+
+  //ICON
+  &__icon {
+    //needed &nbsp; in html to give it a line
+    position: relative;
+    margin-top: 3.5rem;
+
+    &,
+    &::before,
+    &::after {
+      width: 3rem;
+      height: 2px;
+      background-color: $color-grey-dark-3;
+      display: inline-block;
+    }
+
+    &::before,
+    &::after {
+      //needs content otherwise these classes wont show
+      content: "";
+      position: absolute;
+      left: 0;
+      transition: all 0.2s;
+    }
+    &::before {
+      top: -0.8rem;
+    }
+    &::after {
+      top: 0.8rem;
+    }
+  }
+
+  //makes the lines spread
+  &__button:hover &__icon::before {
+    top: -1rem;
+  }
+  &__button:hover &__icon::after {
+    top: 1rem;
+  }
+
+  &__checkbox:checked + &__button &__icon {
+    background-color: transparent;
+  }
+  &__checkbox:checked + &__button &__icon::before {
+    top: 0;
+    transform: rotate(135deg); //over rotate gives cooler effect
+  }
+  &__checkbox:checked + &__button &__icon::after {
+    top: 0;
+    transform: rotate(-135deg);
   }
 }
