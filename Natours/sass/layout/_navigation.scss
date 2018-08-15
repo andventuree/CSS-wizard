@@ -5,11 +5,14 @@
     background-color: $color-white;
     height: 7rem;
     width: 7rem;
+    border-radius: 50%;
     position: fixed;
     top: 6rem;
     right: 6rem;
-    z-index: 2000;
+    z-index: 2000; //highest elem on page
+    box-shadow: 0 1rem 3rem rgba($color-black, 0.1);
   }
+
   &__background {
     height: 6rem;
     width: 6rem;
@@ -22,18 +25,22 @@
       $color-primary-light,
       $color-primary-dark
     );
-    z-index: 1000; //so itll always stay on top
+    z-index: 1000; //3 highest elem on page
 
-    transform: scale(80); //enlarges circle to cover screen
+    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
   &__nav {
     height: 100vh;
-    width: 100%;
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 1500;
+    z-index: 1500; //2 highest elem on page
+
+    //0 width makes elem disappear
+    width: 0;
+    opacity: 0;
+    transition: opacity 0.8s;
   }
 
   &__list {
@@ -41,9 +48,11 @@
     @include centerAbsElem;
     list-style: none;
     text-align: center;
+    width: 100%; //removes leftover effect of having list on the edge of screen
   }
   &__item {
   }
+
   &__link {
     &:link,
     &:visited {
@@ -61,7 +70,7 @@
         $color-white 50%
       );
       background-size: 220%;
-      transition: all 0.4s;
+      transition: all 0.9s;
 
       span {
         margin-right: 1.5rem;
@@ -75,5 +84,15 @@
       color: $color-primary;
       transform: translateX(1rem);
     }
+  }
+
+  //~ selects siblings
+  &__checkbox:checked ~ &__background {
+    transform: scale(80);
+  }
+
+  &__checkbox:checked ~ &__nav {
+    opacity: 1;
+    width: 100%;
   }
 }
